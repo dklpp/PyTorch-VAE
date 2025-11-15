@@ -6,8 +6,6 @@ from .types_ import *
 
 
 class VanillaVAE(BaseVAE):
-
-
     def __init__(self,
                  in_channels: int,
                  latent_dim: int,
@@ -36,7 +34,6 @@ class VanillaVAE(BaseVAE):
         self.fc_mu = nn.Linear(hidden_dims[-1]*4, latent_dim)
         self.fc_var = nn.Linear(hidden_dims[-1]*4, latent_dim)
 
-
         # Build Decoder
         modules = []
 
@@ -56,7 +53,6 @@ class VanillaVAE(BaseVAE):
                     nn.BatchNorm2d(hidden_dims[i + 1]),
                     nn.LeakyReLU())
             )
-
 
 
         self.decoder = nn.Sequential(*modules)
